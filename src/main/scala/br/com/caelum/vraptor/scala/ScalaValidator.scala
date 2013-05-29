@@ -1,6 +1,6 @@
 package br.com.caelum.vraptor.scala
 
-import br.com.caelum.vraptor.{Result, Validator}
+import br.com.caelum.vraptor.{ Result, Validator }
 import br.com.caelum.vraptor.ioc.Component
 import br.com.caelum.vraptor.core.Localization
 import br.com.caelum.vraptor.proxy.Proxifier
@@ -9,9 +9,9 @@ import br.com.caelum.vraptor.view.ValidationViewsFactory
 import java.util.List
 
 @Component
-class ScalaValidator(result:Result, factory:ValidationViewsFactory, outjector:Outjector, proxifier:Proxifier,
-                     beanValidators:List[BeanValidator], localization:Localization)
-        extends DefaultValidator(result, factory, outjector, proxifier, beanValidators, localization) {
+class ScalaValidator(result: Result, factory: ValidationViewsFactory, outjector: Outjector, proxifier: Proxifier,
+  beanValidator: BeanValidator, localization: Localization)
+  extends DefaultValidator(result, factory, outjector, proxifier, beanValidator, localization) {
 
   def check(test: Boolean, i18nKey: String = "", category: String = ""): Validator = {
     checking(new Validations {
