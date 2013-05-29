@@ -15,10 +15,10 @@
  */
 package br.com.caelum.vraptor.scala
 
-import br.com.caelum.vraptor.http.ParameterNameProvider
 import java.lang.reflect.AccessibleObject
 import br.com.caelum.vraptor.ioc.{ApplicationScoped, Component}
 import scala.collection.JavaConversions._
+import br.com.caelum.vraptor.http.ParanamerNameProvider
 
 /**
  * removes scala meta information from parameter names
@@ -26,8 +26,8 @@ import scala.collection.JavaConversions._
  */
 @Component
 @ApplicationScoped
-class ScalaParameterNameProvider(delegate:ParameterNameProvider) extends ParameterNameProvider {
+class ScalaParameterNameProvider extends ParanamerNameProvider {
   override def parameterNamesFor(accessible:AccessibleObject):Array[String] = {
-    delegate.parameterNamesFor(accessible).map(_.replaceAll("\\$.*$", ""))
+    super.parameterNamesFor(accessible).map(_.replaceAll("\\$.*$", ""))
   }
 }
